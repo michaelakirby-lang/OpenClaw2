@@ -24,11 +24,12 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "anthropic/claude-3-5-sonnet-20240620"
+        "primary": "anthropic/claude-sonnet-4-6"
       },
       "models": {
         "anthropic/claude-opus-4-6": {},
-        "anthropic/claude-3-5-sonnet-20240620": {}
+        "anthropic/claude-3-5-sonnet-20240620": {},
+        "anthropic/claude-sonnet-4-6": {}
       },
       "workspace": "/data/.openclaw/workspace"
     }
