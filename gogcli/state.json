@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "accounts": [
+    {
+      "id": "4c260ba0",
+      "email": "michaela.kirby@weavechain.com",
+      "client": "personal",
+      "personal": true,
+      "services": [
+        "gmail:read",
+        "calendar:read",
+        "calendar:write",
+        "drive:read",
+        "sheets:read",
+        "docs:read"
+      ],
+      "authenticated": false,
+      "gmailWatch": {
+        "enabled": false,
+        "port": null,
+        "expiration": null,
+        "lastPushAt": null,
+        "pid": null
+      }
+    }
+  ],
+  "gmailPush": {
+    "token": "zL9J6xA5RhXxTXTJsWBKbTr9iAh3eTHW",
+    "topics": {}
+  }
+}

@@ -1,17 +1,14 @@
 # USER.md - About Your Human
 
-_Learn about the person you're helping. Update this as you go._
-
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+- **Name:** Michaela
+- **What to call them:** Michaela
+- **Pronouns:**
+- **Timezone:** EST (US Eastern)
+- **Notes:** Telegram username @ColdBrewPlease
 
 ## Context
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
-
----
-
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+- **Role:** UX Designer + Project Manager (new to both the PM side and the broader tech world)
+- **Background:** New to coding, tech, and web3 — learning and growing into it
+- **What she needs:** Clear explanations, no assumed knowledge, patience with tech concepts
+- **Communication style:** Keep it friendly, break things down, avoid unexplained jargon
