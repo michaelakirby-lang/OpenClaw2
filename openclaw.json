@@ -24,12 +24,13 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "anthropic/claude-sonnet-4-6"
+        "primary": "openai/gpt-4.1-mini"
       },
       "models": {
         "anthropic/claude-opus-4-6": {},
         "anthropic/claude-3-5-sonnet-20240620": {},
-        "anthropic/claude-sonnet-4-6": {}
+        "anthropic/claude-sonnet-4-6": {},
+        "openai/gpt-4.1-mini": {}
       },
       "workspace": "/data/.openclaw/workspace"
     }
