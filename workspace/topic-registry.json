@@ -2,7 +2,12 @@
   "groups": {
     "-1003525666022": {
       "name": "WEV Bot Engineering",
-      "topics": {},
+      "topics": {
+        "5": {
+          "name": "Mana Engineering General",
+          "iconColor": 7322096
+        }
+      },
       "accountId": "wev-eng1-bot",
       "agentId": "wev-eng-1"
     }
