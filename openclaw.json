@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.3.13",
-    "lastTouchedAt": "2026-03-16T21:27:33.550Z"
+    "lastTouchedVersion": "2026.3.22",
+    "lastTouchedAt": "2026-03-23T13:30:32.952Z"
   },
   "wizard": {
     "lastRunAt": "2026-03-16T21:27:29.480Z",
@@ -32,7 +32,11 @@
         "anthropic/claude-sonnet-4-6": {},
         "openai/gpt-4.1-mini": {}
       },
-      "workspace": "/data/.openclaw/workspace"
+      "workspace": "/data/.openclaw/workspace",
+      "maxConcurrent": 8,
+      "subagents": {
+        "maxConcurrent": 6
+      }
     },
     "list": [
       {
@@ -44,12 +48,31 @@
         "model": {
           "primary": "anthropic/claude-opus-4-6"
         }
+      },
+      {
+        "id": "wev-eng-1",
+        "default": false,
+        "workspace": "/data/.openclaw/workspace-wev-eng-1",
+        "agentDir": "/data/.openclaw/agents/wev-eng-1/agent",
+        "identity": {
+          "name": "wev-eng-1"
+        }
       }
     ]
   },
   "tools": {
     "profile": "full"
   },
+  "bindings": [
+    {
+      "type": "route",
+      "agentId": "wev-eng-1",
+      "match": {
+        "channel": "telegram",
+        "accountId": "wev-eng1-bot"
+      }
+    }
+  ],
   "commands": {
     "native": "auto",
     "nativeSkills": "auto",
@@ -57,40 +80,85 @@
     "ownerDisplay": "raw"
   },
   "session": {
-    "dmScope": "per-channel-peer"
-  },
-  "gateway": {
-    "port": 18789,
-    "mode": "local",
-    "bind": "loopback",
-    "auth": {
-      "mode": "token",
-      "token": "${OPENCLAW_GATEWAY_TOKEN}"
-    },
-    "tailscale": {
-      "mode": "off",
-      "resetOnExit": false
-    },
-    "trustedProxies": [
-      "127.0.0.1"
-    ],
-    "controlUi": {
-      "allowedOrigins": [
-        "https://openclaw-railway-template-production-f8eb.up.railway.app"
-      ]
+    "dmScope": "per-channel-peer",
+    "resetByType": {
+      "thread": {
+        "mode": "idle",
+        "idleMinutes": 525600
+      }
     }
   },
-  "skills": {
-    "install": {
-      "nodeManager": "npm"
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "bootstrap-extra-files": {
+          "enabled": true,
+          "paths": [
+            "hooks/bootstrap/AGENTS.md",
+            "hooks/bootstrap/TOOLS.md"
+          ]
+        }
+      }
     }
   },
   "channels": {
     "telegram": {
       "enabled": true,
-      "botToken": "${TELEGRAM_BOT_TOKEN}",
       "dmPolicy": "pairing",
-      "groupPolicy": "allowlist"
+      "groupPolicy": "allowlist",
+      "streaming": "partial",
+      "accounts": {
+        "default": {
+          "dmPolicy": "pairing",
+          "botToken": "${TELEGRAM_BOT_TOKEN}",
+          "groupPolicy": "allowlist",
+          "streaming": "partial"
+        },
+        "wev-eng1-bot": {
+          "name": "wev_eng1_bot",
+          "enabled": true,
+          "dmPolicy": "pairing",
+          "botToken": "${TELEGRAM_BOT_TOKEN_WEV_ENG1_BOT}",
+          "groupPolicy": "allowlist",
+          "streaming": "partial",
+          "groups": {
+            "-1003525666022": {
+              "requireMention": false
+            }
+          },
+          "groupAllowFrom": [
+            "6477576459"
+          ]
+        }
+      },
+      "defaultAccount": "default"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://openclaw-railway-template-production-f8eb.up.railway.app"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "trustedProxies": [
+      "127.0.0.1"
+    ],
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
     }
   },
   "plugins": {
@@ -110,20 +178,6 @@
       "usage-tracker": {
         "enabled": true
       }
-    }
-  },
-  "hooks": {
-    "internal": {
-      "entries": {
-        "bootstrap-extra-files": {
-          "enabled": true,
-          "paths": [
-            "hooks/bootstrap/AGENTS.md",
-            "hooks/bootstrap/TOOLS.md"
-          ]
-        }
-      },
-      "enabled": true
     }
   }
 }
